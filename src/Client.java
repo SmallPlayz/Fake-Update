@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.*;
 import java.net.Socket;
 import java.net.URI;
@@ -16,10 +17,10 @@ public class Client implements Runnable {
     private static BufferedReader inputLine = null;
     private static boolean closed = false;
 
-    public static void main(String []args) {
+    public static void main(String []args) throws InterruptedException, AWTException {
 
         int portNumber = 12348; //port
-        String host = "localhost";
+        String host = "10.10.3.242";
 
         System.out.println("Now using host = " + host + ", portNumber = " + portNumber);
 
@@ -69,6 +70,8 @@ public class Client implements Runnable {
             while ((responseLine = is.readLine()) != null) {
                 System.out.println(responseLine);
                 if(responseLine.equalsIgnoreCase("abc")){
+                    System.out.println("worked!!!");
+                    Graphics.frame.setVisible(true);
                     Desktop desk = Desktop.getDesktop();
                     desk.browse(new URI("https://fakeupdate.net/win10ue/"));
                     Thread.sleep(500);
@@ -94,12 +97,24 @@ public class Client implements Runnable {
 }
 class Graphics {
     public static JFrame frame;
-    Graphics(){
+    Graphics() throws AWTException, InterruptedException {
         frame = new JFrame("0");
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.setLocation(2000, 300);
         frame.setSize(300, 200);
         frame.setLayout(null);
-        frame.setVisible(true);
+        frame.getContentPane().setBackground(Color.BLACK);
         frame.setResizable(false);
+        /*
+        Robot robot = new Robot();
+        robot.mouseMove(90, 20);
+        robot.mousePress(InputEvent.BUTTON1_MASK);
+        for(int i = 90; i<2500; i++){
+            robot.mouseMove(i, 20);
+        }
+     robot.mouseRelease(InputEvent.BUTTON1_MASK);
+         */
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setUndecorated(true);
     }
 }
