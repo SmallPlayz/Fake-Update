@@ -97,7 +97,7 @@ class Graphics {
     Graphics(){
         frame = new JFrame("0");
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        frame.setSize(200, 200);
+        frame.setSize(300, 200);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setResizable(false);

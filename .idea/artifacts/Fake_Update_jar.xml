@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Fake-Update:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fake_Update_jar</output-path>
+    <root id="archive" name="Fake-Update.jar">
+      <element id="module-output" name="Fake-Update" />
+    </root>
+  </artifact>
+</component>
